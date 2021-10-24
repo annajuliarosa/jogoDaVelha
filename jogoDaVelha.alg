@@ -1,4 +1,4 @@
-algoritmo "semnome"
+algoritmo "JogoDaVelha"
 // Função :
 // Autor :
 // Data : 27/09/2021
