@@ -43,12 +43,10 @@ ESCREVAL ("+--+--+--+")
 
 fimprocedimento
 
+
+procedimento JogadaX()
 inicio
-mostraVelha()
 
-repita
-
-se (finalizou<>1) entao
 ESCREVAL ("Vai jogar [x] em qual posição? ")
 LEIA (x)
 
@@ -57,10 +55,12 @@ limpatela
 
 para l <- 1 ate 3 faca
    para c <- 1 ate 3 faca
+
       se (x=valores[l,c]) entao
       valores[l,c]<-"X"
       fimse
-          se (valores[1,c]="X") E (valores[2,c]="X") E (valores[3,c]="X")   entao
+
+      se (valores[1,c]="X") E (valores[2,c]="X") E (valores[3,c]="X")   entao
           finalizou<-1
       senao
           se (valores[l,1]="X") E (valores[l,2]="X") E (valores[l,3]="X") entao
@@ -75,10 +75,16 @@ para l <- 1 ate 3 faca
           fimse
           fimse
           fimse
-fimpara
+
     fimpara
-fimse
+    fimpara
+
 Tabuleiro()
+
+fimprocedimento
+
+procedimento JogadaO()
+inicio
 
 se (finalizou<>1) entao
  ESCREVAL ("Vai jogar [o] em qual posição? ")
@@ -88,6 +94,7 @@ limpatela
 
 para l <- 1 ate 3 faca
    para c <- 1 ate 3 faca
+
 se (o=valores[l,c]) entao
    valores[l,c]<-"O"
     fimse
@@ -106,27 +113,44 @@ se (o=valores[l,c]) entao
           fimse
           fimse
           fimse
-    fimpara
+      fimpara
 fimpara
 
 Tabuleiro()
 fimse
 
+fimprocedimento
+
+procedimento velha()
+inicio
+
 fim<-0
-para l <- 1 ate 3faca
+
+para l <- 1 ate 3 faca
    para c <- 1 ate 3 faca
 
-    se (valores[l,c]<>"o") E  (valores[l,c]<>"x") entao
-    fim<-1
-
+se (valores[l,c]<>"X") e (valores[l,c]<>"O") entao
+fim<-fim+1
 fimse
-
 fimpara
 fimpara
 
-se (fim=0) entao
+se (fim=0)entao
 finalizou<-1
 fimse
+
+fimprocedimento
+
+inicio
+
+mostraVelha()
+
+repita
+
+
+JogadaX()
+JogadaO()
+Velha()
 
 se (finalizou=1)entao
 ESCREVAL ("JOGO FINALIZOU!!!")
@@ -134,4 +158,7 @@ fimse
 
 ate (finalizou=1)
 
+
+
 fimalgoritmo
+
